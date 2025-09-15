@@ -2,7 +2,6 @@ require('dotenv').config();
 const {TronWeb} = require('tronweb');
 
 const FULL_HOST = process.env.FULL_HOST || 'https://nile.trongrid.io';
-const API_KEY   = process.env.TRON_PRO_API_KEY || '';
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const NETWORK   = (process.env.NETWORK || 'nile').toLowerCase();
 
@@ -18,7 +17,6 @@ const CHAIN_ID_HEX = {
 const tronWeb = new TronWeb({
   fullHost: FULL_HOST,
   privateKey: PRIVATE_KEY
-  //headers: API_KEY ? { 'TRON-PRO-API-KEY': API_KEY } : undefined,
 });
 
 (async () => {
@@ -28,7 +26,7 @@ const tronWeb = new TronWeb({
     name: 'TRON TIP-712 Demo',
     version: '1',
     chainId: CHAIN_ID_HEX[NETWORK] || CHAIN_ID_HEX.nile,
-    verifyingContract: signerAddr, // for demo; real apps use contract address
+    verifyingContract: signerAddr,
   };
 
   const types = {
