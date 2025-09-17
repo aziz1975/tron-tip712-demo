@@ -50,6 +50,7 @@ const tronWeb = new TronWeb({
   };
 
   let signature = await tronWeb.trx._signTypedData(domain, types, value); // returns 0x_____
+  console.log('Signature:', signature);
 
   let sig = signature.startsWith('0x') ? signature.slice(2) : signature;
   const tail = sig.slice(128, 130);
@@ -59,7 +60,7 @@ const tronWeb = new TronWeb({
 
   console.log('Signature:', signature);
 
-   const ok = await tronWeb.trx.verifyTypedData(domain, types, value, signature, signerAddr);
+  const ok = await tronWeb.trx.verifyTypedData(domain, types, value, signature, signerAddr);
   console.log('Verified:', ok);
 })().catch((e) => {
   console.error(e);

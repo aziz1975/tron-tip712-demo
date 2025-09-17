@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "dotenv": "^17.2.2",
+    "solc": "^0.8.30",
     "tronweb": "^6.0.4"
   }
 }
